@@ -3,7 +3,7 @@ const Option = require('../models/options');
 
 module.exports.create = async function (req, res) {
   try {
-    // In this, the question is created
+    // Create a new question
     console.log(req.url);
     console.log(req.body);
 
@@ -26,10 +26,10 @@ module.exports.showDetails = async function (req, res) {
     if (ques) {
       res.send(ques);
     } else {
-      res.send("Id does not exist");
+      res.send("ID does not exist");
     }
 
-    // In this, the details about the question are displayed
+    // Display details about the question
   } catch (err) {
     console.log("Error in showing question details", err);
     res.status(500).send("Internal Server Error");
@@ -38,13 +38,13 @@ module.exports.showDetails = async function (req, res) {
 
 module.exports.deleteQues = async function (req, res) {
   try {
-    // In this, the question will be deleted
+    // Delete the question
     const ques = await Question.findById(req.params.id);
 
     if (ques) {
-      // Delete all the options of the option DB having the question id as req.params.id
+      // Delete the question by its ID
       await Question.deleteOne({ _id: req.params.id });
-      // Deleting all the options of that question
+      // Delete all the associated options of that question
       await Option.deleteMany({ question: req.params.id });
 
       res.send("Question deleted");
