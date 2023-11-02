@@ -1,7 +1,7 @@
 {
   "name": "pollingapi-main",
   "version": "1.0.0",
-  "description": "API for Polling Questions - Coding Ninjas Backend Skill Test Project",
+  "description": "Polling System API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
